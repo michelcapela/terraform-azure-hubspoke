@@ -30,7 +30,6 @@ Foi incluído um **pipeline simples** de CI/CD usando **GitHub Actions**, com os
 - `terraform fmt`
 - `terraform validate`
 - `terraform plan`
-- `terraform apply` (somente na branch `main`)
 
 ---
 
@@ -87,10 +86,6 @@ terraform init
 terraform plan -var-file="terraform.tfvars"
 terraform apply -var-file="terraform.tfvars"
 ```
-
-## 4. CI/CD com GitHub Actions (opcional)
-
-O repositório possui pipeline automático que executa `plan` e `apply` ao fazer push na branch `main`.
 
 ---
 
