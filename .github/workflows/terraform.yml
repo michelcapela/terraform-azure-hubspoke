@@ -25,10 +25,10 @@ jobs:
         run: terraform init
 
       - name: Terraform Format Check
-        run: terraform fmt -check -recursive -diff -write=false
+        run: terraform fmt -check $(find . -type f -name "*.tf")
 
       - name: Terraform Validate
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -input=false -var-file="terraform.tfvars"
+        run: terraform plan -input=false -var-file=terraform.tfvars -out=tfplan.out
