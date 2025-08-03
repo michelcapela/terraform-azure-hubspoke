@@ -13,11 +13,13 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-
       - name: setup terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.6.6
+
+      - name: set admin_password from secret
+        run: echo "admin_password=\"${{ secrets.ADMIN_PASSWORD }}\"" > terraform.tfvars
 
       - name: terraform init
         run: terraform init
@@ -29,8 +31,8 @@ jobs:
         run: terraform validate
 
       - name: terraform plan
-        run: terraform plan -input=false -out=tfplan
+        run: terraform plan -input=false -var-file="terraform.tfvars" -out=tfplan
 
       - name: terraform apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -input=false -auto-approve tfplan
+        run: terraform apply -input=false -var-file="terraform.tfvars" -auto-approve tfplan
