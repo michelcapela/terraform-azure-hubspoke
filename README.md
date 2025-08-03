@@ -24,12 +24,11 @@ NSGs e Route Tables controlando todo o tráfego
 
 ## Workflow GitHub Actions
 
-Foi incluído um **pipeline simples** de CI/CD usando **GitHub Actions**, com os seguintes passos:
+Foi incluído um **pipeline bem simples** de CI/CD usando **GitHub Actions**, com os seguintes passos:
 
 - `terraform init`
 - `terraform fmt`
 - `terraform validate`
-- `terraform plan`
 
 ---
 
@@ -82,8 +81,6 @@ Crie um arquivo `terraform.tfvars` na raiz do projeto seguindo o `terraform.tfva
 ## 3. Rodar localmente com Terraform
 
 ```bash
-terraform init
-terraform validate
 terraform plan -var-file="terraform.tfvars"
 terraform apply -var-file="terraform.tfvars"
 ```
@@ -99,6 +96,10 @@ Caso seja necessário escalar ou colaborar, facilmente adicionamos um backend re
 ### Sem Workspaces ou Multi-Ambientes
 Este projeto atende aos requisitos de um único ambiente de produção simulado.  
 Em cenários reais, aplicaria workspaces (`dev`, `staging`, `prod`).
+
+### Sem uso de Secrets externos
+Como o deploy foi feito localmente, variáveis sensíveis não foram incluídas no GitHub Actions.  
+Para ambientes reais, usaríamos **GitHub Secrets** ou **Azure Key Vault**.
 
 ---
 

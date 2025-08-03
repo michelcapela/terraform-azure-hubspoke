@@ -18,9 +18,6 @@ jobs:
         with:
           terraform_version: 1.6.6
 
-      - name: Set admin_password from secret
-        run: echo "admin_password=\"${{ secrets.ADMIN_PASSWORD }}\"" > terraform.tfvars
-
       - name: Terraform Init
         run: terraform init
 
@@ -29,6 +26,3 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
-
-      - name: Terraform Plan
-        run: terraform plan -input=false -var-file=terraform.tfvars -out=tfplan.out
