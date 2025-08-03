@@ -22,7 +22,7 @@ NSGs e Route Tables controlando todo o tráfego
 
 ---
 
-## Deploy via GitHub Actions
+## Workflow GitHub Actions
 
 Foi incluído um **pipeline simples** de CI/CD usando **GitHub Actions**, com os seguintes passos:
 
@@ -83,6 +83,7 @@ Crie um arquivo `terraform.tfvars` na raiz do projeto seguindo o `terraform.tfva
 
 ```bash
 terraform init
+terraform validate
 terraform plan -var-file="terraform.tfvars"
 terraform apply -var-file="terraform.tfvars"
 ```
@@ -117,7 +118,7 @@ Aproximadamente **13 horas** no total:
 
 Agradeço pela oportunidade de participar do processo seletivo e desenvolver este projeto. Foi um desafio com muitos aprendizados e que me permitiu demonstrar conhecimentos de DevOps em Azure e Terraform.
 
-Caso desejem elevar a solução, com separação de ambientes, integração com Key Vault, backend remoto, Azure DevOps para CI/CD, secrets avançados ou automações mais avançadas, estou totalmente disponível e preparado para adaptar e evoluir conforme as necessidades!
+Caso desejem elevar a solução, com separação de ambientes, integração com Key Vault, backend remoto, Azure DevOps para CI/CD, secrets e automações mais avançadas, estou totalmente disponível e preparado para adaptar e evoluir conforme as necessidades!
 
 Muito obrigado pela entrevista e pela confiança. Estou animado com a possibilidade de contribuir com a Lua Cloud Consultancy!
 
