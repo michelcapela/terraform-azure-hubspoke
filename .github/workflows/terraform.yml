@@ -1,0 +1,36 @@
+name: terraform pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  terraform:
+    name: terraform plan and apply
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.6
+
+      - name: terraform init
+        run: terraform init
+
+      - name: terraform format check
+        run: terraform fmt -check -recursive
+
+      - name: terraform validate
+        run: terraform validate
+
+      - name: terraform plan
+        run: terraform plan -input=false -out=tfplan
+
+      - name: terraform apply
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -input=false -auto-approve tfplan

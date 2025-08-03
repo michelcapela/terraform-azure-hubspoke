@@ -1,0 +1,12 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.log
+*.zip
+*.tar.gz
+*.tfplan
+.vscode/
+.idea/
+*.backup
+*.lock.hcl

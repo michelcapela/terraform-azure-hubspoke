@@ -1,0 +1,10 @@
+location = "westeurope"
+
+admin_password = "vm-password"
+
+tags = {
+  environment = "test"
+  owner       = "your.name"
+  project     = "project-name"
+  cost_center = "cost-center"
+}
